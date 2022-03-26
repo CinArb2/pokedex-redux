@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const Card = styled.div`
-  width: 250px;
+  width: 320px;
   border: 3px solid black;
   border-radius: 20px;
   padding: 1rem;
-  text-align:center;
-
+  text-align: center;
+  margin: 0 auto;
 `
 
 export const CardImg = styled.img`

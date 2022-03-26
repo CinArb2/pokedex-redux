@@ -1,5 +1,5 @@
 
-import { SET_NAME, SET_POKEMON_LIST, SELECTED_POKEMON, SET_LIST_TYPES, SELECTED_TYPE } from './actionTypes'
+import { SET_NAME, SET_POKEMON_LIST, SET_LIST_TYPES, SET_TOTAL_POKE, SET_ITEMS_TYPE } from './actionTypes'
 
 export const reducerListPokemon = (state = [], action) => {
   switch (action.type) {
@@ -19,14 +19,7 @@ export const reducerName = (state = "", action) => {
   }
 }
 
-export const reducerSelectedProduct = (state = [], action) => {
-  switch (action.type) {
-    case SELECTED_POKEMON:
-      return action.payload
-    default:
-      return state
-  }
-}
+
 
 export const reducerListTypes = (state = [], action) => {
   switch (action.type) {
@@ -37,9 +30,18 @@ export const reducerListTypes = (state = [], action) => {
   }
 }
 
-export const reducerSelectedType = (state = [], action) => {
+export const reducerTotalPoke = (state = [], action) => {
   switch (action.type) {
-    case SELECTED_TYPE:
+    case SET_TOTAL_POKE:
+      return action.payload
+    default:
+      return state
+  }
+}
+
+export const reducerSetItemsType = (state = [], action) => {
+  switch (action.type) {
+    case SET_ITEMS_TYPE:
       return action.payload
     default:
       return state

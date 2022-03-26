@@ -3,8 +3,10 @@ import Theme from "./components/Theme";
 import Login from "./pages/Login";
 import { Routes, Route } from "react-router-dom";
 import Pokedex from "./pages/Pokedex";
+import CharacterView from "./pages/CharacterView";
 import { Provider } from 'react-redux'
 import store from "./redux/store";
+import ProtectedRoutes from "./pages/ProtectedRoutes";
 
 function App() {
   return (
@@ -13,7 +15,11 @@ function App() {
         <GlobalStyle />
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/pokedex" element={<Pokedex/>} />
+          
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/pokedex" element={<Pokedex />} />
+            <Route path="/pokedex/:id" element={<CharacterView />} />
+          </Route>
         </Routes>
       </Theme>
     </Provider>

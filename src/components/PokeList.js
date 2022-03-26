@@ -1,26 +1,22 @@
 import React from 'react'
 import { Container } from './Container'
 import {Card, CardImg, CardTitle, CardText, CardInfo, CardDetail} from './Card'
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
-import { fetchListPokemon } from '../redux/actionCreators'
+import {  useSelector } from 'react-redux'
+import { LinkPoke } from './LinkPoke'
+import Pagination from './Pagination'
 
 
 const PokeList = () => {
-  const dispatch = useDispatch()
-  const listPokemons = useSelector(state => state.listPokemons)
-  
-  useEffect(() => {
-    dispatch(fetchListPokemon())
-  }, [])
+  const { listPokemons } = useSelector(state => state)
 
-  
 
   return (
-    <Container maxWidth="1000px" flex>
+    <>
+      <Container maxWidth="1400px" flex>
       {
         listPokemons?.map(el => (
-          <Card key={el.data.id}>
+        <LinkPoke to={`/pokedex/${el.data.id}`} key={el.data.id}>
+          <Card >
             <CardImg src={el.data.sprites.other.dream_world.front_default} alt="pokemon" />
             <CardTitle>{el.data.name }</CardTitle>
             <CardText>Planta / Veneno</CardText>
@@ -43,11 +39,14 @@ const PokeList = () => {
                 <CardText>45</CardText>
               </CardDetail>
             </CardInfo>
-          </Card>
+            </Card>
+        </LinkPoke>
         ))
       }
       
-    </Container>
+      </Container>
+      <Pagination />
+    </>
   )
 }
 

@@ -6,37 +6,39 @@ import { Button } from '../components/Button'
 import { Text } from '../components/Text'
 import { Container } from '../components/Container'
 import PokeList from '../components/PokeList'
-import { fetchListTypes } from '../redux/actionCreators'
+import { fetchListTypes, fetchListTypeSelected } from '../redux/actionCreators'
 import { useDispatch, useSelector } from 'react-redux'
+import Select from 'react-select'
 
 const Pokedex = () => {
   const dispatch = useDispatch()
-  const listType = useSelector(state => state.listType)
+  const {listType, name} = useSelector(state => state)
 
   useEffect(() => {
     dispatch(fetchListTypes())
   }, [])
 
   const handleSelect = (e) => {
-    console.log(e.target.value)
+    dispatch(fetchListTypeSelected(e.value))
+    
   }
+
+  const options = []
+
+  listType.map(el => {
+    return options.push({value: el.url, label: el.name})
+  })
+
 
   return (
     <>
       <HeaderPokedex />
-      <Container maxWidth="1000px" >
-        <Text> <span>Bienvenido Nombre,</span> aqui podras encontrar tu pokemon favorito</Text>
+      <Container maxWidth="1350px" >
+        <Text> <span>Bienvenido {name},</span> aqui podras encontrar tu pokemon favorito</Text>
         <Form>
-          <Input />
+          <Input placeholder="Buscar pokemon..."/>
           <Button>Buscar</Button>
-          <Input list="types" onBlur={handleSelect}/>
-          <datalist id="types">
-            {
-              listType.map((type, index) => (
-                <option key={index} value={ type.name}/>
-              ))
-            }
-          </datalist>
+          <Select options={options} onChange={handleSelect}/>
         </Form>
       </Container>
       <PokeList/>

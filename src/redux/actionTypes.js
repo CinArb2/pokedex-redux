@@ -1,5 +1,5 @@
 export const SET_NAME = "SET_NAME"
 export const SET_POKEMON_LIST = "SET_POKEMON_LIST"
-export const SELECTED_POKEMON = "SELECTED_POKEMON"
 export const SET_LIST_TYPES = "SET_LIST_TYPES"
-export const SELECTED_TYPE = "SELECTED_TYPE"
+export const SET_TOTAL_POKE = "SET_TOTAL_POKE"
+export const SET_ITEMS_TYPE = "SET_TOTAL_POKE"

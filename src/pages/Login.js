@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Wrapper } from '../components/Wrapper'
 import { Heading} from '../components/Heading'
 import { Input} from '../components/Input'
@@ -7,17 +7,32 @@ import { Form } from '../components/Form'
 import { Container } from '../components/Container'
 import DecorationPoke from '../components/DecorationPoke'
 import { Logo } from '../components/Logo'
+import { setName } from '../redux/actionCreators'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router'
 
 const Login = () => {
+  const [input, setInput] = useState("")
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (input.trim()) {
+      dispatch(setName(input))
+      navigate("/pokedex")
+    }
+  }
+
   return (
     
     <Wrapper grid>
       <Container className='text-center'>
         <Logo src="./PokeLogo.png" alt="logo"/>
         <Heading>Hola Entrenador!</Heading>
-        <Form>
+        <Form onSubmit={ handleSubmit }>
           <label>Ingrese su nombre para empezar</label>
-          <Input />
+          <Input onChange={(e) => setInput(e.target.value)} value={input}/>
           <Button>Empezar</Button>
         </Form>
       </Container>
