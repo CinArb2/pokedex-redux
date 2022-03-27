@@ -5,18 +5,20 @@ import { fetchListPokemon } from '../redux/actionCreators'
 
 const Pagination = () => {
   const dispatch = useDispatch()
-  const { totalPoke } = useSelector(state => state)
+  const { totalPoke, itemTypesList } = useSelector(state => state)
   const [itemOffset, setItemOffset] = useState(0);
-  const [currentItems, setCurrentItems] = useState(null);
-  const { itemTypesList} = useSelector(state => state.itemTypesList)
 
   useEffect(() => {
-    dispatch(fetchListPokemon(`https://pokeapi.co/api/v2/pokemon/?offset=${itemOffset}&limit=20`))
-  }, [itemOffset])
+    if (itemTypesList.length > 0) {
+      dispatch(fetchListPokemon(itemTypesList.slice(0, 20)))
+    } else {
+      dispatch(fetchListPokemon(`https://pokeapi.co/api/v2/pokemon/?offset=${itemOffset}&limit=20`))
+    }
+  }, [dispatch, itemOffset, itemTypesList])
  
   const handlePageClick = (event) => {
-    if (itemTypesList !== "") {
-      
+    if (itemTypesList.length > 0) {
+      dispatch(fetchListPokemon(itemTypesList.slice(event.selected * 20, event.selected * 20 + 20)))
     } else {
       setItemOffset(event.selected * 20);
     }
@@ -36,8 +38,8 @@ const Pagination = () => {
         breakLinkClassName="page-link"
         className="pagination"
         activeClassName="active"
-       pageLinkClassName="page-link"
-       pageClassName="page-li"
+        pageLinkClassName="page-link"
+        pageClassName="page-li"
       />
   )
 }

@@ -67,4 +67,8 @@ export const GlobalStyle = createGlobalStyle`
     .text-center{
       text-align: center;
     }
+
+    .text-left{
+      text-align: left;
+    }
 `

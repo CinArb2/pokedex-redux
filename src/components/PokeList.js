@@ -17,7 +17,7 @@ const PokeList = () => {
         listPokemons?.map(el => (
         <LinkPoke to={`/pokedex/${el.data.id}`} key={el.data.id}>
           <Card >
-            <CardImg src={el.data.sprites.other.dream_world.front_default} alt="pokemon" />
+            <CardImg src={el.data.sprites.other.dream_world.front_default || el.data.sprites.other.home.front_default} alt="pokemon" />
             <CardTitle>{el.data.name }</CardTitle>
             <CardText>Planta / Veneno</CardText>
             <CardText><span> Tipo </span></CardText>

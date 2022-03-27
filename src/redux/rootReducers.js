@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { reducerListPokemon, reducerName, reducerListTypes, reducerTotalPoke, reducerSetItemsType } from './reducers'
+import { reducerListPokemon, reducerName, reducerListTypes, reducerTotalPoke, reducerSetItemsType, reducerQuery } from './reducers'
 
 const rootReducer = combineReducers({
   name: reducerName,
@@ -7,6 +7,7 @@ const rootReducer = combineReducers({
   listType: reducerListTypes,
   totalPoke: reducerTotalPoke,
   itemTypesList: reducerSetItemsType,
+  querySearch: reducerQuery,
 })
 
 export default rootReducer;
