@@ -61,7 +61,7 @@ export const CardOpened = styled(Card)`
 
 export const CardBox = styled.p`
   font-size: 1.6rem;
-  padding: 1rem;
+  padding: 0.5rem;
   border: 1px solid ${(props) => props.color || 'black'};
   border-radius: 10px;
   background-color: ${(props) => props.color};

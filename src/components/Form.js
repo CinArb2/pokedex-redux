@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
-  width: 90%;
+  width: 100%;
+  margin: 0 auto;
   & label{
     font-size: ${({theme})=> theme.font.size.small};
     display: block;

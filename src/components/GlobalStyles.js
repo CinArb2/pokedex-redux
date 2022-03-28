@@ -28,6 +28,7 @@ export const GlobalStyle = createGlobalStyle`
     ul,
     ol{
       list-style: none;
+      padding-left: 0;
     }
 
     /* Set core root defaults */

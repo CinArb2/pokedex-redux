@@ -44,7 +44,7 @@ const CharacterView = () => {
             </CardDetail>
             <CardDetail>
               <CardTitle>Abilities</CardTitle>
-              {querySearch.data?.abilities?.map(e => <CardBox key={e.slot}>{e.ability.name}</CardBox>)}
+              {querySearch.data?.abilities?.map(e => <CardBox key={e.slot} color="#7fa091">{e.ability.name}</CardBox>)}
             </CardDetail>
           </CardInfo>
           <CardTitle>Stats</CardTitle>
@@ -61,7 +61,7 @@ const CharacterView = () => {
         </CardOpened>
         <CardOpened>
           <CardTitle>Movements</CardTitle>
-          {querySearch.data?.moves?.map((e, index) => <CardBox key={index}>{e.move.name}</CardBox>)}
+          {querySearch.data?.moves?.map((e, index) => <CardBox key={index} color="#858c99">{e.move.name}</CardBox>)}
         </CardOpened>
       </Container>
     </main>
