@@ -23,12 +23,17 @@ const Pagination = () => {
       setItemOffset(event.selected * 20);
     }
   };
+
+  const handleScroll = () => {
+    window.scrollTo(0, 0);
+  }
   
   return (
       <PaginationStyle
         breakLabel="..."
         nextLabel=">"
         onPageChange={handlePageClick}
+        onClick={handleScroll}
         pageRangeDisplayed={2}
         marginPagesDisplayed={2}
         pageCount={Math.ceil(totalPoke / 20)}
@@ -42,6 +47,7 @@ const Pagination = () => {
         pageClassName="page-li"
         previousClassName="previous"
         nextClassName="next"
+        disabledClassName="disabled"
       />
   )
 }

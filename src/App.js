@@ -7,6 +7,7 @@ import CharacterView from "./pages/CharacterView";
 import { Provider } from 'react-redux'
 import store from "./redux/store";
 import ProtectedRoutes from "./pages/ProtectedRoutes";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <GlobalStyle />
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/*" element={ <NotFound/>} /> 
           
           <Route element={<ProtectedRoutes />}>
             <Route path="/pokedex" element={<Pokedex />} />

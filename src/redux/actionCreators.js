@@ -45,7 +45,7 @@ export const fetchQuery = (query) => {
       dispatch(setQueryForm(response))
     } catch (e) {
       dispatch(setQueryForm({ error: 'pokemon not found, please try again' }))
-      console.clear()
+      // console.clear()
     }
   }
 }

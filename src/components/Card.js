@@ -1,12 +1,14 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 export const Card = styled.div`
-  width: 320px;
+  width: 300px;
   border-radius: 20px;
   padding: 1rem;
   text-align: center;
   margin: 0 auto;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
+  
 `
 
 export const CardImg = styled.img`
@@ -14,10 +16,11 @@ export const CardImg = styled.img`
   width: 80%;
   max-width: 150px;
   margin: 0 auto;
+  object-fit: contain;
 `
 
 export const CardTitle = styled.h2`
-  font-size: 2rem;
+  font-size: clamp(1.3rem, 5vw, 2rem);
   margin-block: 0.5rem;
   color: #505d5d;
 `
@@ -52,6 +55,15 @@ export const CardInfo = styled.div`
 export const CardDetail = styled.div`
   width: ${(props) => props.width || '40%'};
   margin: 0 ${(props) => props.margin || '0'};
+
+  ${props => props.seeMore && css`
+    height: 830px;
+    overflow: hidden;
+
+    @media (max-width: 690px){
+      height: 200px;
+    }
+  `}
 `
 export const CardOpened = styled(Card)`
   width: 90%;
@@ -60,7 +72,7 @@ export const CardOpened = styled(Card)`
 `
 
 export const CardBox = styled.p`
-  font-size: 1.6rem;
+  font-size: clamp(1rem, 4vw, 1.6rem);
   padding: 0.5rem;
   border: 1px solid ${(props) => props.color || 'black'};
   border-radius: 10px;
@@ -92,4 +104,15 @@ export const CardStats = styled.div`
     right: 0;
     top: -120%;
   }
+`
+
+export const CardButton = styled.button`
+  margin-top: 1rem;
+  background-color: transparent;
+  border: none;
+  color: #8e8989;
+  cursor: pointer;
+  border: 1px solid #8e8989;
+  padding: 0.5rem;
+  border-radius: 10px;
 `

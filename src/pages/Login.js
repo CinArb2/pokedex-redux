@@ -32,7 +32,7 @@ const Login = () => {
         <Heading>Hola Entrenador!</Heading>
         <Form onSubmit={ handleSubmit }>
           <label>Ingrese su nombre para empezar</label>
-          <Input onChange={(e) => setInput(e.target.value)} value={input}/>
+          <Input onChange={(e) => setInput(e.target.value)} value={input} width="50%"/>
           <Button>Empezar</Button>
         </Form>
       </Container>

@@ -9,6 +9,7 @@ import PokeList from '../components/PokeList'
 import { fetchListTypes, fetchListTypeSelected, fetchListPokemon, fetchQuery } from '../redux/actionCreators'
 import { useDispatch, useSelector } from 'react-redux'
 import {SelectedStyled} from '../components/SelectedStyled'
+import {Alert} from '../components/Alert'
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 
@@ -66,20 +67,23 @@ const Pokedex = () => {
       <HeaderPokedex />
       <Container maxWidth="1350px">
         <Text> <span>Welcome {name},</span> here you will find your favorite pokemon</Text>
-        <Form onSubmit={handleSubmit}>
-          <Input
-            onChange={(e) => { setInput(e.target.value); createSuggestions() }}
-            placeholder="look for a pokemon"
-            value={input}
-            list="pokemons"
-          />
-          <datalist id="pokemons">
-            {suggestions.map(el => (<option value={el.name} key={el.name}/>))}
-          </datalist>
-          <Button>Buscar</Button>
-        </Form>
-        {querySearch.error}
-        <SelectedStyled options={options} onChange={handleSelect} placeholder="filter by type"/>
+
+        <Container grid>
+          <Form onSubmit={handleSubmit}>
+            <Input
+              onChange={(e) => { setInput(e.target.value); createSuggestions() }}
+              placeholder="look for a pokemon"
+              value={input}
+              list="pokemons"
+            />
+            <datalist id="pokemons">
+              {suggestions.map(el => (<option value={el.name} key={el.name}/>))}
+            </datalist>
+            <Button>Buscar</Button>
+            <Alert >{querySearch.error}</Alert>
+          </Form>
+          <SelectedStyled options={options} onChange={handleSelect} placeholder="filter by type"/>
+        </Container>
       </Container>
       <PokeList/>
     </main>
