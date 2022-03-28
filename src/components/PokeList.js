@@ -24,8 +24,8 @@ const PokeList = () => {
   return (
     <>
       <Container maxWidth="1400px" flex>
-      {
-        listPokemons?.map(el => (
+        {
+          listPokemons?.map(el => (
         <LinkPoke to={`/pokedex/${el.data.id}`} key={el.data.id} onClick={handleScroll}>
           <Card >
             <CardImg src={el.data.sprites.other.dream_world.front_default || el.data.sprites.other.home.front_default || "./pokeball_PNG32.png"} alt="pokemon" />
