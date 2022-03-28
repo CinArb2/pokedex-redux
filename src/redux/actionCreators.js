@@ -1,9 +1,16 @@
-import { SET_NAME, SET_POKEMON_LIST, SET_LIST_TYPES, SET_TOTAL_POKE, SET_ITEMS_TYPE, QUERY_FORM, CLEAN_QUERY_FORM } from './actionTypes'
-import axios from 'axios'
+import {
+  SET_NAME,
+  SET_POKEMON_LIST,
+  SET_LIST_TYPES,
+  SET_TOTAL_POKE,
+  SET_ITEMS_TYPE,
+  QUERY_FORM,
+  CLEAN_QUERY_FORM
+} from './actionTypes';
+import axios from 'axios';
 
 export const fetchListPokemon = (url) => {
   return async (dispatch) => {
-    
     let arrayPromises = null;
     if (typeof url === 'string') {
       const response = await axios.get(url)
@@ -23,7 +30,6 @@ export const fetchListTypeSelected = (url) => {
     dispatch(setItemsType(response.data.pokemon))
   }
 }
-
 
 export const fetchListTypes = () => {
   return async (dispatch) => {

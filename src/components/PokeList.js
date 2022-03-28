@@ -1,6 +1,14 @@
 import React from 'react'
 import { Container } from './Container'
-import {Card, CardImg, CardTitle, CardText, CardInfo, CardDetail} from './Card'
+import {
+  Card,
+  CardImg,
+  CardTitle,
+  CardText,
+  CardInfo,
+  CardDetail,
+  CardSubTitle
+} from './Card'
 import {  useSelector } from 'react-redux'
 import { LinkPoke } from './LinkPoke'
 import Pagination from './Pagination'
@@ -18,32 +26,31 @@ const PokeList = () => {
         <LinkPoke to={`/pokedex/${el.data.id}`} key={el.data.id}>
           <Card >
             <CardImg src={el.data.sprites.other.dream_world.front_default || el.data.sprites.other.home.front_default} alt="pokemon" />
-            <CardTitle>{el.data.name }</CardTitle>
-            <CardText>Planta / Veneno</CardText>
-            <CardText><span> Tipo </span></CardText>
+              <CardTitle>{el.data.name}</CardTitle>
+              <CardText>{el.data?.types?.map(e => <span key={e.slot}>{e.type.name}, </span>)}</CardText>
+            <CardSubTitle> Tipo </CardSubTitle>
             <CardInfo>
               <CardDetail>
                 <CardText> <span> HP </span></CardText>
-                <CardText>59</CardText>
+                <CardText>{el.data.stats[0].base_stat}</CardText>
               </CardDetail>
               <CardDetail>
-                <CardText><span> HP </span></CardText>
-                <CardText>20</CardText>
+                <CardText><span> Attack </span></CardText>
+                <CardText>{el.data.stats[1].base_stat}</CardText>
               </CardDetail>
               <CardDetail>
-                <CardText><span> HP </span></CardText>
-                <CardText>49</CardText>
+                <CardText><span> Defense </span></CardText>
+                <CardText>{el.data.stats[2].base_stat}</CardText>
               </CardDetail>
               <CardDetail>
-                <CardText><span> HP </span></CardText>
-                <CardText>45</CardText>
+                <CardText><span> Speed </span></CardText>
+                <CardText>{el.data.stats[5].base_stat}</CardText>
               </CardDetail>
             </CardInfo>
             </Card>
         </LinkPoke>
         ))
       }
-      
       </Container>
       <Pagination />
     </>

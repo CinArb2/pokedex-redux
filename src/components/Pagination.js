@@ -27,12 +27,12 @@ const Pagination = () => {
   return (
       <PaginationStyle
         breakLabel="..."
-        nextLabel="next >"
+        nextLabel=">"
         onPageChange={handlePageClick}
         pageRangeDisplayed={2}
         marginPagesDisplayed={2}
         pageCount={Math.ceil(totalPoke / 20)}
-        previousLabel="< previous"
+        previousLabel="<"
         renderOnZeroPageCount={null}
         breakClassName="page-item"
         breakLinkClassName="page-link"
@@ -40,6 +40,8 @@ const Pagination = () => {
         activeClassName="active"
         pageLinkClassName="page-link"
         pageClassName="page-li"
+        previousClassName="previous"
+        nextClassName="next"
       />
   )
 }

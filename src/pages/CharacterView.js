@@ -14,7 +14,7 @@ const CharacterView = () => {
   useEffect(() => {
     dispatch(fetchQuery(param.id))
     return () => {
-      dispatch(cleanQueryForm())  //whenever the component removes it will executes
+      dispatch(cleanQueryForm()) 
     }
   }, [dispatch, param])
 
@@ -24,55 +24,44 @@ const CharacterView = () => {
       <HeaderPokedex />
       <Container maxWidth="1000px">
         <CardOpened >
-          <CardImg src={querySearch.data?.sprites.other.dream_world.front_default} alt="pokemon" />
-          <CardTitle>#{querySearch.data?.id}</CardTitle>
+          <CardImg src={querySearch.data?.sprites.other.dream_world.front_default || querySearch.data?.sprites.other.home.front_default} alt="pokemon" />
+          <CardTitle>#{querySearch.data?.order}</CardTitle>
           <CardTitle>{querySearch.data?.name}</CardTitle>
           <CardInfo maxWidth="200px">
             <CardDetail>
-              <CardText>Peso</CardText>
-              <CardText>59</CardText>
+              <CardText>Weight</CardText>
+              <CardText>{querySearch.data?.weight}</CardText>
             </CardDetail>
             <CardDetail>
-              <CardText>Altura</CardText>
-              <CardText>20</CardText>
+              <CardText>Height</CardText>
+              <CardText>{querySearch.data?.height}</CardText>
             </CardDetail>
           </CardInfo>
           <CardInfo>
             <CardDetail>
               <CardTitle>Type</CardTitle>
-              <CardBox color="green">Planta</CardBox>
-              <CardBox color="purple">Venenoso</CardBox>
+              {querySearch.data?.types?.map(e => <CardBox key={e.slot}>{e.type.name}</CardBox>)}
             </CardDetail>
             <CardDetail>
               <CardTitle>Abilities</CardTitle>
-              <CardBox >Planta</CardBox>
-              <CardBox >Venenoso</CardBox>
+              {querySearch.data?.abilities?.map(e => <CardBox key={e.slot}>{e.ability.name}</CardBox>)}
             </CardDetail>
           </CardInfo>
           <CardTitle>Stats</CardTitle>
           <CardDetail width="90%" margin="auto">
-            <CardSubTitle className="text-left">20</CardSubTitle>
-            <CardStats />
-            <CardSubTitle className="text-left">20</CardSubTitle>
-            <CardStats />
-            <CardSubTitle className="text-left">20</CardSubTitle>
-            <CardStats />
-            <CardSubTitle className="text-left">20</CardSubTitle>
-            <CardStats/>        
+            <CardSubTitle className="text-left">HP</CardSubTitle>
+            <CardStats stats={querySearch.data?.stats[0].base_stat}/>
+            <CardSubTitle className="text-left">Attack</CardSubTitle>
+            <CardStats stats={querySearch.data?.stats[1].base_stat}/>
+            <CardSubTitle className="text-left">Defense</CardSubTitle>
+            <CardStats stats={ querySearch.data?.stats[2].base_stat}/>
+            <CardSubTitle className="text-left">Speed</CardSubTitle>
+            <CardStats stats={ querySearch.data?.stats[5].base_stat}/>        
           </CardDetail>
         </CardOpened>
         <CardOpened>
           <CardTitle>Movements</CardTitle>
-          <CardBox >Planta</CardBox>
-          <CardBox >Planta</CardBox>
-          <CardBox >Planta</CardBox>
-          <CardBox >Planta</CardBox>
-          <CardBox >Planta</CardBox>
-          <CardBox >Planta</CardBox>
-          <CardBox >Planta</CardBox>
-          <CardBox >Planta</CardBox>
-          <CardBox >Planta</CardBox>
-          <CardBox >Planta</CardBox>
+          {querySearch.data?.moves?.map((e, index) => <CardBox key={index}>{e.move.name}</CardBox>)}
         </CardOpened>
       </Container>
     </main>

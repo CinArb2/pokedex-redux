@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const Card = styled.div`
   width: 320px;
-  border: 3px solid black;
   border-radius: 20px;
   padding: 1rem;
   text-align: center;
   margin: 0 auto;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 `
 
 export const CardImg = styled.img`
@@ -19,11 +19,13 @@ export const CardImg = styled.img`
 export const CardTitle = styled.h2`
   font-size: 2rem;
   margin-block: 0.5rem;
+  color: #505d5d;
 `
 
 export const CardSubTitle = styled.h3`
   font-size: 1.3rem;
-  margin-block: 0.5rem;
+  margin-block: 0.7rem;
+  color: #4b4545;
 `
 
 export const CardText = styled.p`
@@ -71,23 +73,23 @@ export const CardBox = styled.p`
 export const CardStats = styled.div`
   width: 100%;
   height: 20px;
-  background-color: gray;
+  background-color: #e3e1e1;
   position: relative;
   margin-block: 1rem;
 
   &:after{
     content: ' ';
-    width: 50%;
+    width: ${(props) => props.stats + '%'};
     height: 20px;
-    background-color: green;
+    background-color: #e5a341;
     position: absolute;
     left: 0;
   }
 
   &:before{
-    content: '50/100';
+    content: '${(props) => props.stats}';
     position: absolute;
     right: 0;
-    top: -105%;
+    top: -120%;
   }
 `

@@ -1,5 +1,12 @@
 import { combineReducers } from 'redux'
-import { reducerListPokemon, reducerName, reducerListTypes, reducerTotalPoke, reducerSetItemsType, reducerQuery } from './reducers'
+import {
+  reducerListPokemon,
+  reducerName,
+  reducerListTypes,
+  reducerTotalPoke,
+  reducerSetItemsType,
+  reducerQuery
+} from './reducers'
 
 const rootReducer = combineReducers({
   name: reducerName,

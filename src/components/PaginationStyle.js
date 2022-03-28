@@ -9,19 +9,31 @@ export const PaginationStyle = styled(ReactPaginate)`
     justify-content: center;
     font-size: 1.7rem;
     flex-wrap: wrap;
+
+    & .previous a{
+        padding: 1.3rem;
+        cursor: pointer;
+      }
+    }
+
+    & .next a{
+        padding: 1.3rem;
+        cursor: pointer;
+      }
+    }
     
     & .page-li{
       cursor: pointer;
-      border: 1px solid gray;
       padding: 0;
 
       &.active{
-        color: red;
+        background-color: red;
+        color: white;
       }
 
       & .page-link{
       padding: 1rem;
-    }
+      }
 
     }
     
