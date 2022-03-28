@@ -1,4 +1,14 @@
-import styled, {css} from "styled-components";
+import styled, { css, keyframes } from "styled-components";
+
+
+const movementX = (x) =>  keyframes`
+  0% {
+    width: 0;
+  }
+  100% {
+    width: ${x}%;
+  }
+`
 
 export const Card = styled.div`
   width: 300px;
@@ -96,6 +106,7 @@ export const CardStats = styled.div`
     background-color: #e5a341;
     position: absolute;
     left: 0;
+    animation: ${props => movementX(props.stats)} 1s ease-out;
   }
 
   &:before{
