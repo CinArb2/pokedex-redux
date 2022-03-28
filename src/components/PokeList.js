@@ -31,7 +31,7 @@ const PokeList = () => {
             <CardImg src={el.data.sprites.other.dream_world.front_default || el.data.sprites.other.home.front_default || "./pokeball_PNG32.png"} alt="pokemon" />
               <CardTitle>{el.data.name}</CardTitle>
               <CardText>{el.data?.types?.map(e => <span key={e.slot}>{e.type.name}, </span>)}</CardText>
-            <CardSubTitle> Tipo </CardSubTitle>
+            <CardSubTitle> Type </CardSubTitle>
             <CardInfo>
               <CardDetail>
                 <CardText> <span> HP </span></CardText>

@@ -91,7 +91,7 @@ export const CardStats = styled.div`
 
   &:after{
     content: ' ';
-    width: ${(props) => props.stats + '%'};
+    width: ${(props) => props.stats > 100 ? '100%' : props.stats + '%'};
     height: 20px;
     background-color: #e5a341;
     position: absolute;

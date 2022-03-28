@@ -36,7 +36,7 @@ const Pokedex = () => {
   const createSuggestions = () => {
 
     if (input.length > 2) {
-      let regex = new RegExp(`^${input}`, 'g')
+      let regex = new RegExp(`^${input.toLowerCase()}`, 'g')
       let arraySuggestions = pokemons.filter(char => char.name.match(regex))
       setSuggestions(arraySuggestions)
     }
@@ -79,7 +79,7 @@ const Pokedex = () => {
             <datalist id="pokemons">
               {suggestions.map(el => (<option value={el.name} key={el.name}/>))}
             </datalist>
-            <Button>Buscar</Button>
+            <Button>Search</Button>
             <Alert >{querySearch.error}</Alert>
           </Form>
           <SelectedStyled options={options} onChange={handleSelect} placeholder="filter by type"/>

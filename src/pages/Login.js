@@ -29,11 +29,11 @@ const Login = () => {
     <Wrapper grid>
       <Container className='text-center'>
         <Logo src="./PokeLogo.png" alt="logo"/>
-        <Heading>Hola Entrenador!</Heading>
+        <Heading>Hello coach!</Heading>
         <Form onSubmit={ handleSubmit }>
-          <label>Ingrese su nombre para empezar</label>
+          <label>Enter your name to get started</label>
           <Input onChange={(e) => setInput(e.target.value)} value={input} width="50%"/>
-          <Button>Empezar</Button>
+          <Button>Start</Button>
         </Form>
       </Container>
       <DecorationPoke right="50%"/>
